@@ -1,0 +1,47 @@
+#include <iostream>
+#include <vector>    // Required for std::vector
+#include <set>
+#include <algorithm> // Required for std::sort
+
+using namespace std;
+
+// Sort and display using vector (keeps duplicates)
+template <typename T>
+void sortWithVector(vector<T> data) {
+    sort(data.begin(), data.end());
+    cout << "Sorted using vector: ";
+    for (const T& item : data) {
+        cout << item << " ";
+    }
+    cout << endl;
+}
+
+// Sort and display using set (removes duplicates)
+template <typename T>
+void sortWithSet(vector<T> data) {
+    set<T> sortedSet(data.begin(), data.end());
+    cout << "Sorted using set: ";
+    for (const T& item : sortedSet) {
+        cout << item << " ";
+    }
+    cout << endl;
+}
+
+int main() {
+    int n;
+    cout << "How many numbers do you want to sort? ";
+    cin >> n;
+
+    vector<double> numbers;
+    cout << "Enter " << n << " numbers: ";
+    for (int i = 0; i < n; ++i) {
+        double value;
+        cin >> value;
+        numbers.push_back(value);
+    }
+
+    sortWithVector(numbers);
+    sortWithSet(numbers);
+
+    return 0;
+}
